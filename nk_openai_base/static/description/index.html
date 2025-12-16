@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NK OpenAI Base - Centralized OpenAI Integration for Odoo v17</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;line-height:1.6;color:#333;background:#fff}
+        .container{max-width:1200px;margin:0 auto;padding:20px}
+        .banner{text-align:center;margin-bottom:30px}
+        .banner img{max-width:100%;height:auto;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+        .header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:60px 40px;border-radius:12px;margin-bottom:40px;text-align:center;box-shadow:0 8px 24px rgba(102,126,234,.3)}
+        .header-content{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:20px;flex-wrap:wrap}
+        .header h1{font-size:3em;font-weight:700;margin-bottom:15px}
+        .header .subtitle{font-size:1.4em;opacity:.95;margin-bottom:10px}
+        .header .version{font-size:1em;opacity:.85;margin-top:15px}
+        .section{background:#fff;padding:40px;border-radius:12px;margin-bottom:30px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #e9ecef}
+        .section h2{color:#667eea;font-size:2em;margin-bottom:25px;padding-bottom:15px;border-bottom:3px solid #667eea}
+        .section h3{color:#495057;font-size:1.5em;margin-top:30px;margin-bottom:15px}
+        .section h4{color:#6c757d;font-size:1.2em;margin-top:20px;margin-bottom:10px}
+        .section p,.section li{font-size:1.05em;line-height:1.8;color:#495057}
+        .section ul,.section ol{margin-left:25px;margin-top:15px}
+        .section li{margin-bottom:10px}
+        .code-block{background:#f8f9fa;border:1px solid #dee2e6;border-radius:6px;padding:20px;margin:20px 0;overflow-x:auto;font-family:'Courier New',monospace;font-size:.95em}
+        .code-block code{color:#e83e8c}
+        .highlight-box{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:30px;border-radius:10px;margin:30px 0}
+        .highlight-box h3{color:#fff;margin-top:0}
+        .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin:18px 0}
+        .card{background:#f8f9fa;padding:25px;border-radius:8px;border-left:4px solid #667eea}
+        .card h4{color:#667eea;margin-top:0}
+        table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.95em}
+        table th,table td{padding:10px;text-align:left;border-bottom:1px solid #dee2e6}
+        table th{background:#f8f9fa;font-weight:600;color:#495057}
+        @media (max-width:768px){
+            .container{padding:15px}
+            .header{padding:30px 20px}
+            .header h1{font-size:1.8em}
+            .header .subtitle{font-size:1em}
+            .section{padding:25px}
+            .section h2{font-size:1.5em}
+            .grid-2{grid-template-columns:1fr}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Banner Image -->
+        <div class="banner">
+            <img src="banner.png" alt="NK OpenAI Base Banner" onerror="this.style.display='none'">
+        </div>
+
+        <!-- Header Section -->
+        <div class="header">
+            <div class="header-content">
+                <div>
+                    <h1>🤖 NK OpenAI Base</h1>
+                    <p class="subtitle">Centralized OpenAI Integration for Odoo v17</p>
+                </div>
+            </div>
+            <p style="font-size:1.1em;margin-top:15px;opacity:.9">
+                Base module providing centralized OpenAI API configuration and service for all NK modules. Required for NK AI Report Builder and other NK AI-powered modules.
+            </p>
+            <p class="version">Version 17.0.1.0.0 | Compatible with Odoo Community v17.0 | Enterprise edition not required</p>
+        </div>
+
+        <!-- IMPORTANT: API Requirements and Costs -->
+        <div class="section" style="background:#fff3cd;border:2px solid #ffc107;border-left:5px solid #ff9800">
+            <h2 style="color:#856404;border-bottom:2px solid #ffc107">⚠️ IMPORTANT: API Requirements and Costs</h2>
+            
+            <div style="background:#fff;padding:20px;border-radius:6px;margin:15px 0;border-left:4px solid #ff9800">
+                <h3 style="color:#856404;margin-top:0">🔑 API Key Required</h3>
+                <p style="font-size:1.1em;font-weight:600;color:#856404;margin-bottom:10px">
+                    <strong>This module REQUIRES a valid OpenAI API key to function.</strong>
+                </p>
+                <p>
+                    You must obtain your own API key from <a href="https://platform.openai.com/api-keys" target="_blank" style="color:#ff9800;font-weight:600">OpenAI Platform</a>. 
+                    The module price does NOT include OpenAI API usage costs.
+                </p>
+            </div>
+
+            <div style="background:#fff;padding:20px;border-radius:6px;margin:15px 0;border-left:4px solid #ff9800">
+                <h3 style="color:#856404;margin-top:0">💰 Who Pays for API Usage?</h3>
+                <p style="font-size:1.1em;font-weight:600;color:#856404;margin-bottom:10px">
+                    <strong>OpenAI usage costs are NOT included in the module price.</strong>
+                </p>
+                <p>
+                    <strong>You are responsible for all OpenAI API costs.</strong> Usage is billed directly by OpenAI based on:
+                </p>
+                <ul>
+                    <li>Model selected (GPT-4, GPT-3.5, etc.)</li>
+                    <li>Number of tokens used (input + output)</li>
+                    <li>Your OpenAI account's pricing tier</li>
+                </ul>
+                <p>
+                    <strong>Without valid API credits, the module will not function.</strong> The app requires an active OpenAI account with available credits.
+                </p>
+            </div>
+
+            <div style="background:#fff;padding:20px;border-radius:6px;margin:15px 0;border-left:4px solid #ff9800">
+                <h3 style="color:#856404;margin-top:0">🔒 Data Privacy and Security</h3>
+                <p style="font-size:1.1em;font-weight:600;color:#856404;margin-bottom:10px">
+                    <strong>What data is sent to OpenAI?</strong>
+                </p>
+                <p>
+                    <strong>Yes, data is sent externally to OpenAI's servers.</strong> The following information is transmitted:
+                </p>
+                <ul>
+                    <li><strong>Model metadata:</strong> Field names, types, and relationships (up to 3 levels deep)</li>
+                    <li><strong>User queries:</strong> Your natural language report requests</li>
+                    <li><strong>Context information:</strong> Date ranges and additional context you provide</li>
+                    <li><strong>System prompts:</strong> Instructions for SQL generation</li>
+                </ul>
+                <p style="font-weight:600;color:#856404;margin-top:15px">
+                    ⚠️ <strong>Actual database records are NOT sent to OpenAI.</strong> Only metadata (field names, types) and your queries are transmitted.
+                </p>
+                <p>
+                    <strong>Is it safe?</strong> OpenAI uses industry-standard encryption (HTTPS/TLS) for all API communications. 
+                    However, you should review OpenAI's <a href="https://openai.com/policies/privacy-policy" target="_blank" style="color:#ff9800">Privacy Policy</a> 
+                    and <a href="https://openai.com/policies/api-data-usage-policies" target="_blank" style="color:#ff9800">Data Usage Policies</a> 
+                    to understand how they handle API data.
+                </p>
+            </div>
+        </div>
+
+        <!-- Overview Section -->
+        <div class="section">
+            <h2>📋 Overview</h2>
+            <p>
+                NK OpenAI Base is a foundational module that provides centralized OpenAI API configuration and service 
+                for all NK modules. This module eliminates the need for each module to manage its own OpenAI settings, 
+                providing a single point of configuration and a unified service interface.
+            </p>
+            <p>
+                By using this base module, other NK modules can easily integrate AI-powered features without duplicating 
+                configuration code or managing API keys separately.
+            </p>
+        </div>
+
+        <!-- Features Section -->
+        <div class="section">
+            <h2>✨ Features</h2>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h4>🔑 Centralized API Key Management</h4>
+                    <p>Single configuration point for OpenAI API key. All NK modules using AI features share the same configuration.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>⚙️ Flexible Configuration</h4>
+                    <p>Configure model selection, base URL, timeout, and token limits. Support for OpenAI and compatible APIs (Ollama, LocalAI).</p>
+                </div>
+                
+                <div class="card">
+                    <h4>🔌 Unified Service Interface</h4>
+                    <p>Provides a standard service interface that all NK modules can use for AI functionality.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>🛡️ Security</h4>
+                    <p>API key is stored securely with proper access controls. Only system administrators can configure settings.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Installation Section -->
+        <div class="section">
+            <h2>📥 Installation</h2>
+            
+            <h3>Prerequisites</h3>
+            <ul>
+                <li><strong>Odoo Version:</strong> 17.0 Community Edition or Enterprise Edition</li>
+                <li><strong>OpenAI API Key:</strong> Get your API key from <a href="https://platform.openai.com/api-keys" target="_blank" style="color:#667eea">OpenAI Platform</a></li>
+            </ul>
+
+            <h3>Installation Steps</h3>
+            <ol>
+                <li><strong>Install the Module</strong>
+                    <p>Install NK OpenAI Base from the Odoo App Store or from the repository.</p>
+                </li>
+                <li><strong>Configure OpenAI Settings</strong>
+                    <p>Navigate to <strong>Settings</strong> → <strong>OpenAI Integration</strong> section.</p>
+                </li>
+                <li><strong>Enable OpenAI Integration</strong>
+                    <p>Check the "Enable OpenAI Integration" checkbox.</p>
+                </li>
+                <li><strong>Enter API Key</strong>
+                    <p>Enter your OpenAI API key in the "OpenAI API Key" field.</p>
+                </li>
+                <li><strong>Configure Model and Settings</strong>
+                    <p>Select your preferred model and adjust timeout/token limits as needed.</p>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Configuration Section -->
+        <div class="section">
+            <h2>⚙️ Configuration</h2>
+            <p>
+                Configure OpenAI settings through the Odoo Settings menu. Navigate to <strong>Settings</strong> → <strong>OpenAI Integration</strong> 
+                to access the configuration panel.
+            </p>
+            <div class="banner" style="margin-top:25px">
+                <img src="screenshots/res_config.png" alt="OpenAI Configuration Settings" onerror="this.style.display='none'" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.15)">
+            </div>
+        </div>
+
+        <!-- Usage Section -->
+        <div class="section">
+            <h2>💻 Usage</h2>
+            
+            <h3>For Module Developers</h3>
+            <p>Other NK modules can use this base module to access OpenAI functionality:</p>
+            
+            <div class="code-block">
+                <code># In your module's __manifest__.py
+'depends': ['nk_openai_base'],
+
+# In your Python code
+openai_service = self.env['nk.openai.service']
+config = openai_service.get_openai_config()
+
+# Call OpenAI API
+response = openai_service.call_openai(
+    prompt="Your prompt here",
+    system_message="You are a helpful assistant"
+)</code>
+            </div>
+
+            <h3>Service Methods</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>get_openai_config()</h4>
+                    <p>Returns dictionary with OpenAI configuration (enabled, api_key, model, base_url, timeout, max_tokens)</p>
+                </div>
+                
+                <div class="card">
+                    <h4>call_openai(prompt, system_message)</h4>
+                    <p>Calls OpenAI API with the provided prompt and returns the response text</p>
+                </div>
+                
+                <div class="card">
+                    <h4>parse_json_response(response_text)</h4>
+                    <p>Parses JSON from OpenAI response, handling markdown code blocks</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compatibility Section -->
+        <div class="section">
+            <h2>✅ Compatibility</h2>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h4>Odoo Versions</h4>
+                    <ul>
+                        <li>✅ <strong>Odoo Community v17.0</strong> (Fully tested and supported)</li>
+                        <li>✅ Odoo Enterprise v17.0 (Compatible, but Enterprise edition not required)</li>
+                    </ul>
+                    <p style="margin-top:15px;padding:10px;background:#e3f2fd;border-radius:4px;font-weight:600;color:#1976d2">
+                        ✓ Compatible with Odoo Community v17.0<br>
+                        ✓ Enterprise edition NOT required
+                    </p>
+                </div>
+                <div class="card">
+                    <h4>Dependencies</h4>
+                    <ul>
+                        <li>✅ base (core Odoo)</li>
+                        <li>✅ openai Python package (external - install with: pip install openai)</li>
+                        <li>✅ Valid OpenAI API key (required for functionality)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Release Notes Section -->
+        <div class="section">
+            <h2>📝 Release Notes</h2>
+            
+            <h3>Version 17.0.1.0.0 (2025-12-16)</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>✨ New Features</h4>
+                    <ul>
+                        <li>Initial release of NK OpenAI Base module</li>
+                        <li>Centralized OpenAI API configuration</li>
+                        <li>Support for 60+ OpenAI models</li>
+                        <li>Chat Completions and Responses API support</li>
+                        <li>Organization and Project ID support</li>
+                        <li>Custom model name support</li>
+                        <li>Rate limit handling with retry logic</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🔧 Improvements</h4>
+                    <ul>
+                        <li>Enhanced error messages with TPM/RPM details</li>
+                        <li>Better context length exceeded handling</li>
+                        <li>Improved API response parsing</li>
+                        <li>Request ID tracking for debugging</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🐛 Fixes</h4>
+                    <ul>
+                        <li>Fixed URL normalization and validation</li>
+                        <li>Fixed base URL joining with endpoints</li>
+                        <li>Improved error messages</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🗑️ Removed</h4>
+                    <ul>
+                        <li>Removed manual requests library usage</li>
+                        <li>Removed temperature parameter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Limitations Section -->
+        <div class="section">
+            <h2>⚠️ Current Limitations</h2>
+            
+            <div class="grid-2">
+                <div class="card" style="border-left-color:#ffc107">
+                    <h4>🔧 Technical</h4>
+                    <ul>
+                        <li>Requires external Python package: openai</li>
+                        <li>API rate limits depend on OpenAI account tier</li>
+                        <li>Context window limits vary by model</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="border-left-color:#ffc107">
+                    <h4>⚙️ Configuration</h4>
+                    <ul>
+                        <li>API key must be configured manually</li>
+                        <li>Model selection limited to predefined list</li>
+                        <li>Custom models require manual entry</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Future Planning Section -->
+        <div class="section">
+            <h2>🚀 Future Planning</h2>
+            
+            <div style="background:#e3f2fd;padding:22px;border-radius:6px;margin-top:25px;border-left:3px solid #2196f3">
+                <h3 style="color:#1976d2;margin-top:0;font-size:1.3em">Planned Improvements</h3>
+                <p style="color:#424242;margin-bottom:12px">
+                    We're continuously working to improve NK OpenAI Base. Planned improvements include:
+                </p>
+                <ul style="color:#424242;margin-left:20px">
+                    <li>Enhanced rate limit management with automatic retry strategies</li>
+                    <li>Support for streaming responses</li>
+                    <li>Built-in prompt templates library</li>
+                    <li>Usage analytics and cost tracking</li>
+                    <li>Multi-provider support (Anthropic, Google, etc.)</li>
+                    <li>Advanced caching mechanisms</li>
+                    <li>Batch request support</li>
+                    <li>Improved error recovery and fallback mechanisms</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="section" style="text-align:center;background:#f8f9fa">
+            <h2 style="border:none;color:#667eea">Support & Resources</h2>
+            <p style="font-size:1.05em;margin-bottom:18px">
+                Need help? Have questions? We're here to assist you!
+            </p>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>📧 Support</h4>
+                    <p>Contact our support team for assistance with installation, configuration, or any questions.</p>
+                </div>
+                <div class="card">
+                    <h4>📚 Documentation</h4>
+                    <p>Comprehensive documentation is available in the module's README file and inline help texts.</p>
+                </div>
+            </div>
+            <p style="margin-top:25px;color:#6c757d;font-size:.9em">
+                © 2025 NK Interactive. All rights reserved.<br>
+                NK OpenAI Base for Odoo v17 | License: LGPL-3 (GNU Lesser General Public License v3.0)
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+

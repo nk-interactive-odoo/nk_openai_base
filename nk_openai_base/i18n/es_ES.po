@@ -1,0 +1,302 @@
+# Translation template for nk_openai_base.
+# Copyright (C) 2025 NK Interactive
+# This file is distributed under the same license as the LGPL-3 License.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-16 12:00:00\n"
+"PO-Revision-Date: 2025-12-16 21:18:55+0530\n"
+"Last-Translator: NK Interactive <info@nkinteractive.com>\n"
+"Language-Team: Spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: nk_openai_base
+#: model:ir.model,name:nk_openai_base.model_res_config_settings
+msgid "OpenAI Settings"
+msgstr "Configuración de OpenAI"
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "OpenAI Integration"
+msgstr "Integración de OpenAI"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,field_description:nk_openai_base.field_res_config_settings__openai_enabled
+msgid "Enable OpenAI Integration"
+msgstr "Habilitar Integración de OpenAI"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,field_description:nk_openai_base.field_res_config_settings__openai_api_key
+msgid "OpenAI API Key"
+msgstr "Clave API de OpenAI"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,field_description:nk_openai_base.field_res_config_settings__openai_model
+msgid "OpenAI Model"
+msgstr "Modelo de OpenAI"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,field_description:nk_openai_base.field_res_config_settings__openai_model_custom
+msgid "Custom Model Name"
+msgstr "Nombre de Modelo Personalizado"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,field_description:nk_openai_base.field_res_config_settings__openai_base_url
+msgid "OpenAI Base URL"
+msgstr "URL Base de OpenAI"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,field_description:nk_openai_base.field_res_config_settings__openai_timeout
+msgid "API Timeout (seconds)"
+msgstr "Tiempo de Espera de API (segundos)"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,field_description:nk_openai_base.field_res_config_settings__openai_max_tokens
+msgid "Max Tokens"
+msgstr "Máximo de Tokens"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,field_description:nk_openai_base.field_res_config_settings__openai_organization_id
+msgid "OpenAI Organization ID"
+msgstr "ID de Organización de OpenAI"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,field_description:nk_openai_base.field_res_config_settings__openai_project_id
+msgid "OpenAI Project ID"
+msgstr "ID de Proyecto de OpenAI"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,field_description:nk_openai_base.field_res_config_settings__openai_api_type
+msgid "API Type"
+msgstr "Tipo de API"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,help:nk_openai_base.field_res_config_settings__openai_enabled
+msgid "Enable AI-powered features using OpenAI API"
+msgstr "Habilitar funciones con IA usando la API de OpenAI"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,help:nk_openai_base.field_res_config_settings__openai_api_key
+msgid "Your OpenAI API key. Get it from https://platform.openai.com/api-keys"
+msgstr "Su clave API de OpenAI. Obténgala de https://platform.openai.com/api-keys"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,help:nk_openai_base.field_res_config_settings__openai_model
+msgid "Select the OpenAI model to use. Rate limits shown as (TPM, RPM). TPM = Tokens Per Minute, RPM = Requests Per Minute. Higher TPM/RPM = faster processing but may cost more."
+msgstr "Seleccione el modelo de OpenAI a usar. Los límites de velocidad se muestran como (TPM, RPM). TPM = Tokens Por Minuto, RPM = Solicitudes Por Minuto. Mayor TPM/RPM = procesamiento más rápido pero puede costar más."
+
+#. module: nk_openai_base
+#: model:ir.model.fields,help:nk_openai_base.field_res_config_settings__openai_model_custom
+msgid "Enter a custom model name if not listed above. Leave empty to use the selected model from the dropdown. This is useful for custom deployments or new model versions."
+msgstr "Ingrese un nombre de modelo personalizado si no está en la lista anterior. Déjelo vacío para usar el modelo seleccionado del menú desplegable. Esto es útil para implementaciones personalizadas o nuevas versiones de modelos."
+
+#. module: nk_openai_base
+#: model:ir.model.fields,help:nk_openai_base.field_res_config_settings__openai_base_url
+msgid "Base URL for OpenAI API. Use default for OpenAI, or custom URL for compatible APIs (e.g., Ollama, LocalAI)"
+msgstr "URL base para la API de OpenAI. Use el predeterminado para OpenAI, o una URL personalizada para APIs compatibles (por ejemplo, Ollama, LocalAI)"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,help:nk_openai_base.field_res_config_settings__openai_timeout
+msgid "Timeout in seconds for OpenAI API requests"
+msgstr "Tiempo de espera en segundos para las solicitudes de la API de OpenAI"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,help:nk_openai_base.field_res_config_settings__openai_max_tokens
+msgid "Maximum number of tokens in the API response"
+msgstr "Número máximo de tokens en la respuesta de la API"
+
+#. module: nk_openai_base
+#: model:ir.model.fields,help:nk_openai_base.field_res_config_settings__openai_organization_id
+msgid "Optional: Organization ID for API requests. Found in your organization settings page. Leave empty if not using multiple organizations."
+msgstr "Opcional: ID de organización para solicitudes de API. Se encuentra en la página de configuración de su organización. Déjelo vacío si no usa múltiples organizaciones."
+
+#. module: nk_openai_base
+#: model:ir.model.fields,help:nk_openai_base.field_res_config_settings__openai_project_id
+msgid "Optional: Project ID for API requests. Found in your project general settings. Leave empty if not using projects."
+msgstr "Opcional: ID de proyecto para solicitudes de API. Se encuentra en la configuración general de su proyecto. Déjelo vacío si no usa proyectos."
+
+#. module: nk_openai_base
+#: model:ir.model.fields,help:nk_openai_base.field_res_config_settings__openai_api_type
+msgid "Choose which OpenAI API to use. Responses API supports advanced features like tools, file search, and structured outputs. Chat Completions API is the traditional API."
+msgstr "Elija qué API de OpenAI usar. La API de Respuestas admite funciones avanzadas como herramientas, búsqueda de archivos y salidas estructuradas. La API de Completado de Chat es la API tradicional."
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "OpenAI Configuration"
+msgstr "Configuración de OpenAI"
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "Enable OpenAI Integration"
+msgstr "Habilitar Integración de OpenAI"
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "Your OpenAI API key. Get it from https://platform.openai.com/api-keys"
+msgstr "Su clave API de OpenAI. Obténgala de https://platform.openai.com/api-keys"
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "API Key"
+msgstr "Clave API"
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "Select the OpenAI model to use. Rate limits shown as (TPM, RPM). TPM = Tokens Per Minute, RPM = Requests Per Minute. Higher limits allow faster processing. GPT-4 series provides better quality, GPT-3.5 Turbo is faster and cheaper. O-series models are optimized for reasoning tasks."
+msgstr "Seleccione el modelo de OpenAI a usar. Los límites de velocidad se muestran como (TPM, RPM). TPM = Tokens Por Minuto, RPM = Solicitudes Por Minuto. Límites más altos permiten un procesamiento más rápido. La serie GPT-4 proporciona mejor calidad, GPT-3.5 Turbo es más rápido y económico. Los modelos de la serie O están optimizados para tareas de razonamiento."
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "Enter a custom model name if your model is not in the list above. Leave empty to use the selected model. Useful for custom deployments, new model versions, or compatible APIs (Ollama, LocalAI, etc.)."
+msgstr "Ingrese un nombre de modelo personalizado si su modelo no está en la lista anterior. Déjelo vacío para usar el modelo seleccionado. Útil para implementaciones personalizadas, nuevas versiones de modelos o APIs compatibles (Ollama, LocalAI, etc.)."
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "Base URL for OpenAI API. Use default for OpenAI, or custom URL for compatible APIs (e.g., Ollama, LocalAI)"
+msgstr "URL base para la API de OpenAI. Use el predeterminado para OpenAI, o una URL personalizada para APIs compatibles (por ejemplo, Ollama, LocalAI)"
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "Timeout in seconds for OpenAI API requests"
+msgstr "Tiempo de espera en segundos para las solicitudes de la API de OpenAI"
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "Choose which OpenAI API to use. Responses API supports advanced features like tools, file search, and structured outputs. Chat Completions API is the traditional API."
+msgstr "Elija qué API de OpenAI usar. La API de Respuestas admite funciones avanzadas como herramientas, búsqueda de archivos y salidas estructuradas. La API de Completado de Chat es la API tradicional."
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "Maximum number of tokens in the API response"
+msgstr "Número máximo de tokens en la respuesta de la API"
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "Optional: Your OpenAI Organization ID. Found in your organization settings page. Only needed if you belong to multiple organizations or use projects."
+msgstr "Opcional: Su ID de Organización de OpenAI. Se encuentra en la página de configuración de su organización. Solo se necesita si pertenece a múltiples organizaciones o usa proyectos."
+
+#. module: nk_openai_base
+#: model_terms:ir.ui.view,arch_db:nk_openai_base.view_openai_settings_form
+msgid "Optional: Your OpenAI Project ID. Found in your project general settings. Only needed if you use projects to organize API usage."
+msgstr "Opcional: Su ID de Proyecto de OpenAI. Se encuentra en la configuración general de su proyecto. Solo se necesita si usa proyectos para organizar el uso de la API."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/models/openai_settings.py:0
+#, python-format
+msgid "OpenAI API key is required when OpenAI integration is enabled."
+msgstr "La clave API de OpenAI es requerida cuando la integración de OpenAI está habilitada."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/models/openai_settings.py:0
+#, python-format
+msgid "Base URL must start with http:// or https://"
+msgstr "La URL base debe comenzar con http:// o https://"
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/models/openai_settings.py:0
+#, python-format
+msgid "Invalid Base URL format. Must be a valid URL (e.g., https://api.openai.com/v1)"
+msgstr "Formato de URL base inválido. Debe ser una URL válida (por ejemplo, https://api.openai.com/v1)"
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/models/openai_settings.py:0
+#, python-format
+msgid "API timeout must be at least 10 seconds."
+msgstr "El tiempo de espera de la API debe ser de al menos 10 segundos."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/models/openai_settings.py:0
+#, python-format
+msgid "Max tokens must be at least 100."
+msgstr "El máximo de tokens debe ser de al menos 100."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "OpenAI is not enabled. Please configure OpenAI API key in Settings."
+msgstr "OpenAI no está habilitado. Por favor configure la clave API de OpenAI en Configuración."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "OpenAI API key is not configured. Please set it in Settings."
+msgstr "La clave API de OpenAI no está configurada. Por favor configúrela en Configuración."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "OpenAI Base URL is not configured. Please set it in Settings."
+msgstr "La URL base de OpenAI no está configurada. Por favor configúrela en Configuración."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "Invalid Base URL format: %s. Must be a valid URL (e.g., https://api.openai.com/v1)"
+msgstr "Formato de URL base inválido: %s. Debe ser una URL válida (por ejemplo, https://api.openai.com/v1)"
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "Invalid Base URL: %s. Error: %s"
+msgstr "URL base inválida: %s. Error: %s"
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "The selected model may not support the Responses API. Try switching to \"Chat Completions API\" in Settings, or use a compatible model (gpt-4.1, gpt-5, o1, o3, o4)."
+msgstr "El modelo seleccionado puede no admitir la API de Respuestas. Intente cambiar a \"API de Completado de Chat\" en Configuración, o use un modelo compatible (gpt-4.1, gpt-5, o1, o3, o4)."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "OpenAI API request timed out. Please try again or increase the timeout in Settings."
+msgstr "La solicitud de la API de OpenAI agotó el tiempo de espera. Por favor intente nuevamente o aumente el tiempo de espera en Configuración."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "Failed to connect to OpenAI API. Please check your internet connection."
+msgstr "Error al conectar con la API de OpenAI. Por favor verifique su conexión a internet."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "OpenAI API authentication failed. Please check your API key in Settings."
+msgstr "La autenticación de la API de OpenAI falló. Por favor verifique su clave API en Configuración."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "OpenAI API payment required. Please check your OpenAI account billing."
+msgstr "Se requiere pago de la API de OpenAI. Por favor verifique la facturación de su cuenta de OpenAI."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "OpenAI API server error. Please try again later."
+msgstr "Error del servidor de la API de OpenAI. Por favor intente más tarde."
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "OpenAI API error: %s"
+msgstr "Error de la API de OpenAI: %s"
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "Unexpected error: %s"
+msgstr "Error inesperado: %s"
+
+#. module: nk_openai_base
+#: code:addons/nk_openai_base/services/openai_service.py:0
+#, python-format
+msgid "OpenAI returned invalid JSON. Please try rephrasing your request."
+msgstr "OpenAI devolvió JSON inválido. Por favor intente reformular su solicitud."
+

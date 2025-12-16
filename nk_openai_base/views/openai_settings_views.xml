@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2025 NK Interactive
+    
+    Odoo Proprietary License v1.0
+-->
+<odoo>
+    <record id="view_openai_settings_form" model="ir.ui.view">
+        <field name="name">OpenAI Settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="OpenAI Integration" string="OpenAI Integration" name="nk_openai_base">
+                    <block title="OpenAI Configuration" name="openai_configuration_container">
+                        <setting string="Enable OpenAI Integration" help="Enable AI-powered features using OpenAI API. This allows modules to use AI functionality.">
+                            <field name="openai_enabled"/>
+                        </setting>
+                        
+                        <setting string="OpenAI API Key" help="Your OpenAI API key. Get it from https://platform.openai.com/api-keys" invisible="not openai_enabled">
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="openai_api_key" string="API Key" class="col-3 col-lg-3 o_light_label"/>
+                                    <div class="col-9 col-lg-9">
+                                        <field name="openai_api_key" widget="password" placeholder="sk-..." class="o_field_password_no_copy"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </setting>
+                        
+                        <setting string="OpenAI Model" help="Select the OpenAI model to use. Rate limits shown as (TPM, RPM). TPM = Tokens Per Minute, RPM = Requests Per Minute. Higher limits allow faster processing. GPT-4 series provides better quality, GPT-3.5 Turbo is faster and cheaper. O-series models are optimized for reasoning tasks." invisible="not openai_enabled">
+                            <field name="openai_model"/>
+                        </setting>
+                        
+                        <setting string="Custom Model Name" help="Enter a custom model name if your model is not in the list above. Leave empty to use the selected model. Useful for custom deployments, new model versions, or compatible APIs (Ollama, LocalAI, etc.)." invisible="not openai_enabled">
+                            <field name="openai_model_custom" placeholder="e.g., gpt-4-custom, llama-3, etc."/>
+                        </setting>
+                        
+                        <setting string="OpenAI Base URL" help="Base URL for OpenAI API. Use default for OpenAI, or custom URL for compatible APIs (e.g., Ollama, LocalAI)" invisible="not openai_enabled">
+                            <field name="openai_base_url"/>
+                        </setting>
+                        
+                        <setting string="API Timeout" help="Timeout in seconds for OpenAI API requests" invisible="not openai_enabled">
+                            <field name="openai_timeout"/>
+                        </setting>
+                        
+                        <setting string="API Type" help="Choose which OpenAI API to use. Responses API supports advanced features like tools, file search, and structured outputs. Chat Completions API is the traditional API." invisible="not openai_enabled">
+                            <field name="openai_api_type"/>
+                        </setting>
+                        
+                        <setting string="Max Tokens" help="Maximum number of tokens in the API response" invisible="not openai_enabled">
+                            <field name="openai_max_tokens"/>
+                        </setting>
+                        
+                        <setting string="Organization ID" help="Optional: Your OpenAI Organization ID. Found in your organization settings page. Only needed if you belong to multiple organizations or use projects." invisible="not openai_enabled">
+                            <field name="openai_organization_id" placeholder="org-..."/>
+                        </setting>
+                        
+                        <setting string="Project ID" help="Optional: Your OpenAI Project ID. Found in your project general settings. Only needed if you use projects to organize API usage." invisible="not openai_enabled">
+                            <field name="openai_project_id" placeholder="proj_..."/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
